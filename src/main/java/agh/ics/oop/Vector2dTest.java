@@ -1,6 +1,5 @@
 package agh.ics.oop;
 
-import jdk.nashorn.internal.ir.SplitReturn;
 import org.junit.Assert;
 import org.junit.Test;
 
