@@ -14,7 +14,6 @@ public class World{
             zebra.move(move);
             System.out.println(zebra.toString());
         }
-
     }
 
     public static ArrayList<Direction> toDirection(String[] args){
