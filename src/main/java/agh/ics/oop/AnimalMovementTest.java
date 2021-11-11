@@ -106,6 +106,5 @@ public class AnimalMovementTest {
         Assert.assertEquals(ans1, parser.parse(t1));
         Assert.assertEquals(ans2, parser.parse(t2));
         Assert.assertEquals(ans3, parser.parse(t3));
-
     }
 }
