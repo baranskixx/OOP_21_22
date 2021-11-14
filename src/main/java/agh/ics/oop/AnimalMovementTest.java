@@ -79,7 +79,7 @@ public class AnimalMovementTest {
 
     @Test
     public void parseTest(){
-        OptionParser parser = new OptionParser();
+        OptionsParser parser = new OptionsParser();
 
         String [] t1 = {"f", "forward", "l", "left", "r", "right", "backward", "b"};
         String [] t2 = {"1", "f", "2", "r"};

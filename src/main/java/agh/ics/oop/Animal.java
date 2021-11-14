@@ -12,20 +12,23 @@ public class Animal {
 
     public Animal(IWorldMap map){
         this.worldMap = map;
+        this.direction = MapDirection.NORTH;
+        this.mapPosition = new Vector2d(1, 1);
     }
 
     public Animal(IWorldMap map, Vector2d initialPosition){
         this.worldMap = map;
+        this.direction = MapDirection.NORTH;
         this.mapPosition = initialPosition;
     }
 
 
     public MapDirection getDirection() {
-        return direction;
+        return this.direction;
     }
 
     public Vector2d getMapPosition() {
-        return mapPosition;
+        return this.mapPosition;
     }
 
     public String toString(){
@@ -42,13 +45,10 @@ public class Animal {
         else if (direction == MoveDirection.LEFT) this.direction = this.direction.previous();
         else {
             Vector2d m = new Vector2d(this.mapPosition.x, this.mapPosition.y);
-
-            m = (direction == MoveDirection.FORWARD)? m.add(this.direction.toUnitVector()) : m.add(this.direction.toUnitVector().opposite());
-            if (worldMap.canMoveTo(m))
+            m = direction == MoveDirection.FORWARD? m.add(this.direction.toUnitVector()) : m.add(this.direction.toUnitVector().opposite());
+            if (this.worldMap.canMoveTo(m)) {
                 this.mapPosition = m;
-
-            this.mapPosition = mapPosition.lowerLeft(new Vector2d(4, 4));
-            this.mapPosition = mapPosition.upperRight(new Vector2d(0, 0));
+            }
         }
     }
 }

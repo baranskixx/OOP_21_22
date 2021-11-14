@@ -2,8 +2,8 @@ package agh.ics.oop;
 
 import java.util.ArrayList;
 
-public class OptionParser {
-    public ArrayList<MoveDirection> parse(String[] instructions){
+public class OptionsParser {
+    public MoveDirection[] parse(String[] instructions){
         ArrayList<MoveDirection> moves = new ArrayList<>();
 
         for (String i : instructions){
@@ -16,6 +16,6 @@ public class OptionParser {
                 }
             }
         }
-        return moves;
+        return moves.toArray(new MoveDirection[0]);
     }
 }
