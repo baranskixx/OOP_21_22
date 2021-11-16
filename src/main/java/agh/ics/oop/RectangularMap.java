@@ -42,4 +42,10 @@ public class RectangularMap implements IWorldMap{
         }
         return null;
     }
+
+    public String toString(){
+        MapVisualizer visualizer = new MapVisualizer(this);
+        return visualizer.draw(new Vector2d(0, 0), new Vector2d(width-1, height-1));
+    }
+
 }
