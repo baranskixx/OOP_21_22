@@ -18,7 +18,6 @@ public class SimulationEngine implements IEngine {
             this.animals[i] = new Animal(this.map, positions[i]);
             this.map.place(this.animals[i]);
         }
-
     }
 
     @Override
