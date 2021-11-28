@@ -1,5 +1,6 @@
-package agh.ics.oop;
+package agh.ics.oop.tests;
 
+import agh.ics.oop.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -24,9 +25,9 @@ public class SimulationTest {
 
         Animal[] a = engine.getAnimals();
 
-        Assert.assertTrue(a[0].getMapPosition().equals(new Vector2d(0, 2)));
-        Assert.assertTrue(a[1].getMapPosition().equals(new Vector2d(1, 2)));
-        Assert.assertTrue(a[2].getMapPosition().equals(new Vector2d(2, 2)));
+        Assert.assertTrue(a[0].getPosition().equals(new Vector2d(0, 2)));
+        Assert.assertTrue(a[1].getPosition().equals(new Vector2d(1, 2)));
+        Assert.assertTrue(a[2].getPosition().equals(new Vector2d(2, 2)));
 
         Assert.assertEquals(map1.toString(), ans1);
     }
@@ -50,8 +51,8 @@ public class SimulationTest {
 
         Animal[] a = engine.getAnimals();
 
-        Assert.assertTrue(a[0].getMapPosition().equals(new Vector2d(1, 0)));
-        Assert.assertTrue(a[1].getMapPosition().equals(new Vector2d(1, 1)));
+        Assert.assertTrue(a[0].getPosition().equals(new Vector2d(1, 0)));
+        Assert.assertTrue(a[1].getPosition().equals(new Vector2d(1, 1)));
 
         Assert.assertEquals(map2.toString(), ans2);
     }
@@ -74,10 +75,10 @@ public class SimulationTest {
 
         Animal[] a = engine.getAnimals();
 
-        System.out.println(a[0].getMapPosition().toString());
+        System.out.println(a[0].getPosition().toString());
 
-        Assert.assertTrue(a[0].getMapPosition().equals(new Vector2d(1, 2)));
-        Assert.assertTrue(a[1].getMapPosition().equals(new Vector2d(2, 2)));
+        Assert.assertTrue(a[0].getPosition().equals(new Vector2d(1, 2)));
+        Assert.assertTrue(a[1].getPosition().equals(new Vector2d(2, 2)));
 
         Assert.assertEquals(map3.toString(), ans3);
     }

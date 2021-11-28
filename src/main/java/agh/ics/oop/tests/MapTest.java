@@ -1,5 +1,9 @@
-package agh.ics.oop;
+package agh.ics.oop.tests;
 
+import agh.ics.oop.Animal;
+import agh.ics.oop.GrassField;
+import agh.ics.oop.RectangularMap;
+import agh.ics.oop.Vector2d;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,16 +19,16 @@ public class MapTest {
         map.place(a1);
         map.place(a2);
 
-        Assert.assertTrue(map.isOccupied(a1.getMapPosition()));
-        Assert.assertTrue(map.isOccupied(a2.getMapPosition()));
+        Assert.assertTrue(map.isOccupied(a1.getPosition()));
+        Assert.assertTrue(map.isOccupied(a2.getPosition()));
         Assert.assertFalse(map.isOccupied(new Vector2d(0 ,0)));
 
-        Assert.assertFalse(map.canMoveTo(a1.getMapPosition()));
-        Assert.assertFalse(map.canMoveTo(a2.getMapPosition()));
+        Assert.assertFalse(map.canMoveTo(a1.getPosition()));
+        Assert.assertFalse(map.canMoveTo(a2.getPosition()));
         Assert.assertTrue(map.canMoveTo(new Vector2d(0 ,0)));
 
-        Assert.assertEquals(a1, map.objectAt(a1.getMapPosition()));
-        Assert.assertEquals(a2, map.objectAt(a2.getMapPosition()));
+        Assert.assertEquals(a1, map.objectAt(a1.getPosition()));
+        Assert.assertEquals(a2, map.objectAt(a2.getPosition()));
         Assert.assertNull(map.objectAt(new Vector2d(0, 0)));
 
         System.out.println(map.toString());
@@ -39,16 +43,16 @@ public class MapTest {
         map.place(a1);
         map.place(a2);
 
-        Assert.assertTrue(map.isOccupied(a1.getMapPosition()));
-        Assert.assertTrue(map.isOccupied(a2.getMapPosition()));
+        Assert.assertTrue(map.isOccupied(a1.getPosition()));
+        Assert.assertTrue(map.isOccupied(a2.getPosition()));
         Assert.assertFalse(map.isOccupied(new Vector2d(0 ,0)));
 
-        Assert.assertFalse(map.canMoveTo(a1.getMapPosition()));
-        Assert.assertFalse(map.canMoveTo(a2.getMapPosition()));
+        Assert.assertFalse(map.canMoveTo(a1.getPosition()));
+        Assert.assertFalse(map.canMoveTo(a2.getPosition()));
         Assert.assertTrue(map.canMoveTo(new Vector2d(0 ,0)));
 
-        Assert.assertEquals(a1, map.objectAt(a1.getMapPosition()));
-        Assert.assertEquals(a2, map.objectAt(a2.getMapPosition()));
+        Assert.assertEquals(a1, map.objectAt(a1.getPosition()));
+        Assert.assertEquals(a2, map.objectAt(a2.getPosition()));
         Assert.assertNull(map.objectAt(new Vector2d(0, 0)));
 
         System.out.println(map.toString());

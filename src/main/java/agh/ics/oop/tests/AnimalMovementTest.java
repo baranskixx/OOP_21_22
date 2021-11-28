@@ -1,5 +1,6 @@
-package agh.ics.oop;
+package agh.ics.oop.tests;
 
+import agh.ics.oop.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -34,19 +35,19 @@ public class AnimalMovementTest {
         jaguar.move(MoveDirection.RIGHT);
         jaguar.move(MoveDirection.FORWARD);
 
-        Assert.assertTrue(jaguar.getMapPosition().equals(new Vector2d(3, 3)));
+        Assert.assertTrue(jaguar.getPosition().equals(new Vector2d(3, 3)));
 
         owl.move(MoveDirection.BACKWARD);
         owl.move(MoveDirection.RIGHT);
         owl.move(MoveDirection.FORWARD);
 
-        Assert.assertTrue(owl.getMapPosition().equals(new Vector2d(3, 1)));
+        Assert.assertTrue(owl.getPosition().equals(new Vector2d(3, 1)));
 
         jaguar.move(MoveDirection.LEFT);
         jaguar.move(MoveDirection.BACKWARD);
         jaguar.move(MoveDirection.BACKWARD);
 
-        Assert.assertTrue(jaguar.getMapPosition().equals(new Vector2d(3, 1)));
+        Assert.assertTrue(jaguar.getPosition().equals(new Vector2d(3, 1)));
 
     }
 
@@ -73,8 +74,8 @@ public class AnimalMovementTest {
         kangaroo.move(MoveDirection.FORWARD);
         kangaroo.move(MoveDirection.FORWARD);
 
-        Assert.assertTrue(jaguar.getMapPosition().equals(new Vector2d(0, 4)));
-        Assert.assertTrue(kangaroo.getMapPosition().equals(new Vector2d(4, 0)));
+        Assert.assertTrue(jaguar.getPosition().equals(new Vector2d(0, 4)));
+        Assert.assertTrue(kangaroo.getPosition().equals(new Vector2d(4, 0)));
     }
 
     @Test

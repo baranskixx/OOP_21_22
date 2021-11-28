@@ -1,5 +1,6 @@
-package agh.ics.oop;
+package agh.ics.oop.tests;
 
+import agh.ics.oop.MapDirection;
 import org.junit.Assert;
 import org.junit.Test;
 
