@@ -1,14 +1,15 @@
 package agh.ics.oop;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Random;
 
-public class GrassField extends AbstractWorldMap{
+public class GrassField extends AbstractWorldMap {
     private int grassCnt;
     private int grassBound;
     private ArrayList<Grass> grassPositions;
 
-    public GrassField(int g){
+    public GrassField(int g) {
         super();
         this.grassCnt = g;
         this.grassPositions = new ArrayList<>();
@@ -17,11 +18,11 @@ public class GrassField extends AbstractWorldMap{
         this.grassBound = (int) Math.floor(Math.sqrt(this.grassCnt * 10));
         Random rand = new Random();
 
-        for(int i=0; i<this.grassCnt; i++){
+        for (int i = 0; i < this.grassCnt; i++) {
             do {
                 x = rand.nextInt(grassBound);
                 y = rand.nextInt(grassBound);
-            } while(this.isOccupied(new Vector2d(x, y)));
+            } while (this.isOccupied(new Vector2d(x, y)));
             this.grassPositions.add(new Grass(new Vector2d(x, y)));
         }
     }
@@ -29,7 +30,7 @@ public class GrassField extends AbstractWorldMap{
     @Override
     public boolean canMoveTo(Vector2d position) {
         Object obj = objectAt(position);
-        return obj == null ||  !obj.getClass().getSimpleName().equals("Animal");
+        return obj == null || !obj.getClass().getSimpleName().equals("Animal");
     }
 
 //    @Override
@@ -41,7 +42,7 @@ public class GrassField extends AbstractWorldMap{
 //    }
 
     @Override
-    public boolean isOccupied(Vector2d position){
+    public boolean isOccupied(Vector2d position) {
         return objectAt(position) != null;
     }
 
@@ -49,7 +50,7 @@ public class GrassField extends AbstractWorldMap{
     public Object objectAt(Vector2d position) {
         Object obj = super.objectAt(position);
         if (obj != null) return obj;
-        for(Grass g: this.grassPositions){
+        for (Grass g : this.grassPositions) {
             if (g.getPosition().equals(position)) return g;
         }
         return null;
@@ -57,15 +58,14 @@ public class GrassField extends AbstractWorldMap{
 
 
     public Vector2d[] getCorners() {
-        Vector2d lowerLeft = new Vector2d(0, 0), upperRight = new Vector2d(grassBound ,grassBound);
+        Vector2d lowerLeft = new Vector2d(0, 0), upperRight = new Vector2d(grassBound, grassBound);
 
-        for (Animal animal : this.animals){
-            lowerLeft = lowerLeft.lowerLeft(animal.getPosition());
-            upperRight = upperRight.upperRight(animal.getPosition());
+        for (Map.Entry<Vector2d, Animal> mapElem : this.animals.entrySet()) {
+            Animal a = mapElem.getValue();
+            lowerLeft = lowerLeft.lowerLeft(a.getPosition());
+            upperRight = upperRight.upperRight(a.getPosition());
         }
-
-        Vector2d [] corners = {lowerLeft, upperRight};
-
+        Vector2d[] corners = {lowerLeft, upperRight};
         return corners;
     }
 }

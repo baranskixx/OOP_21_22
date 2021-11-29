@@ -12,16 +12,17 @@ public class MapTest {
     @Test
     public void testRectMap(){
         RectangularMap map = new RectangularMap(5, 5);
-
         Animal a1 = new Animal(map, new Vector2d(1, 1));
         Animal a2 = new Animal(map, new Vector2d(3, 3));
 
-        map.place(a1);
-        map.place(a2);
+        Assert.assertTrue(map.place(a1));
+        Assert.assertTrue(map.place(a2));
 
         Assert.assertTrue(map.isOccupied(a1.getPosition()));
         Assert.assertTrue(map.isOccupied(a2.getPosition()));
         Assert.assertFalse(map.isOccupied(new Vector2d(0 ,0)));
+        Assert.assertFalse(map.isOccupied(new Vector2d(1, 2)));
+//        Assert.assertFalse(map.isOccupied(a1.getPosition()));
 
         Assert.assertFalse(map.canMoveTo(a1.getPosition()));
         Assert.assertFalse(map.canMoveTo(a2.getPosition()));
@@ -31,6 +32,7 @@ public class MapTest {
         Assert.assertEquals(a2, map.objectAt(a2.getPosition()));
         Assert.assertNull(map.objectAt(new Vector2d(0, 0)));
 
+        map.printAnimals();
         System.out.println(map.toString());
     }
 
@@ -40,8 +42,8 @@ public class MapTest {
         Animal a1 = new Animal(map, new Vector2d(1, 1));
         Animal a2 = new Animal(map, new Vector2d(3, 3));
 
-        map.place(a1);
-        map.place(a2);
+        Assert.assertTrue(map.place(a1));
+        Assert.assertTrue(map.place(a2));
 
         Assert.assertTrue(map.isOccupied(a1.getPosition()));
         Assert.assertTrue(map.isOccupied(a2.getPosition()));
