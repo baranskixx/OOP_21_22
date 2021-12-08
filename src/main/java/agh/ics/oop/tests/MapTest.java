@@ -7,8 +7,7 @@ import agh.ics.oop.Vector2d;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class MapTest {
-
+public class MapTest{
     @Test
     public void testRectMap(){
         RectangularMap map = new RectangularMap(5, 5);
@@ -58,5 +57,14 @@ public class MapTest {
         Assert.assertNull(map.objectAt(new Vector2d(0, 0)));
 
         System.out.println(map.toString());
+    }
+
+    @Test
+    public void testCollision(){
+        RectangularMap map = new RectangularMap(5, 5);
+        Animal a1 = new Animal(map, new Vector2d(1, 1));
+
+        map.place(a1);
+        map.place(a1);
     }
 }

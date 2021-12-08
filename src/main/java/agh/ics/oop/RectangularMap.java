@@ -3,8 +3,8 @@ package agh.ics.oop;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-public class RectangularMap extends AbstractWorldMap {
-    private int width, height;
+public class RectangularMap extends AbstractWorldMap{
+    protected int width, height;
 
     public RectangularMap(int width, int height){
         super();

@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SimulationEngine implements IEngine {
-    private IWorldMap map;
-    private MoveDirection[] moves;
-    private Animal [] animals;
+    protected IWorldMap map;
+    protected MoveDirection[] moves;
+    protected Animal [] animals;
 
     public SimulationEngine(MoveDirection[] moves, IWorldMap map, Vector2d[] positions){
         this.moves = moves;
