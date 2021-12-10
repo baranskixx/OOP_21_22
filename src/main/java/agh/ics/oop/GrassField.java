@@ -23,7 +23,10 @@ public class GrassField extends AbstractWorldMap implements IWorldMap{
                 x = rand.nextInt(grassBound);
                 y = rand.nextInt(grassBound);
             } while (this.isOccupied(new Vector2d(x, y)));
-            this.grass.put(new Vector2d(x, y), new Grass(new Vector2d(x, y)));
+            Vector2d v = new Vector2d(x, y);
+            Grass gr = new Grass(v);
+            this.grass.put(v, gr);
+            this.boundary.addObject(gr);
         }
     }
 
@@ -54,12 +57,6 @@ public class GrassField extends AbstractWorldMap implements IWorldMap{
     }
 
     public Vector2d[] getCorners() {
-        Vector2d lowerLeft = new Vector2d(0, 0), upperRight = new Vector2d(grassBound, grassBound);
-
-        for (Vector2d position : this.animals.keySet()) {
-            lowerLeft = lowerLeft.lowerLeft(position);
-            upperRight = upperRight.upperRight(position);
-        }
-        return new Vector2d[]{lowerLeft, upperRight};
+        return this.boundary.getBounds();
     }
 }

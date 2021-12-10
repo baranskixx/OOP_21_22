@@ -52,7 +52,6 @@ public class Animal implements IMapElement{
             m = direction == MoveDirection.FORWARD? m.add(this.direction.toUnitVector()) : m.add(this.direction.toUnitVector().opposite());
             if (this.worldMap.canMoveTo(m)) {
                 this.positionChanged(m);
-                this.mapPosition = m;
             }
         }
     }
@@ -66,8 +65,10 @@ public class Animal implements IMapElement{
     }
 
     public void positionChanged(Vector2d newPos){
+        Vector2d oldPos = this.mapPosition;
+        this.mapPosition = newPos;
         for (IPositionChangeObserver o : this.observers){
-            o.positionChanged(this.getPosition(), newPos);
+            o.positionChanged(oldPos, newPos);
         }
     }
 }

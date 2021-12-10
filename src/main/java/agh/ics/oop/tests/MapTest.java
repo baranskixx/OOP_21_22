@@ -58,13 +58,4 @@ public class MapTest{
 
         System.out.println(map.toString());
     }
-
-    @Test
-    public void testCollision(){
-        RectangularMap map = new RectangularMap(5, 5);
-        Animal a1 = new Animal(map, new Vector2d(1, 1));
-
-        map.place(a1);
-        map.place(a1);
-    }
 }

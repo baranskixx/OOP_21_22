@@ -52,7 +52,6 @@ public class SimulationTest {
 
         Animal[] a = engine.getAnimals();
 
-
         Assert.assertTrue(a[0].getPosition().equals(new Vector2d(1, 0)));
         Assert.assertTrue(a[1].getPosition().equals(new Vector2d(1, 1)));
 
@@ -78,11 +77,10 @@ public class SimulationTest {
 
         Animal[] a = engine.getAnimals();
 
-        System.out.println(a[0].getPosition().toString());
-
         Assert.assertTrue(a[0].getPosition().equals(new Vector2d(1, 2)));
         Assert.assertTrue(a[1].getPosition().equals(new Vector2d(2, 2)));
 
+        System.out.println(map3);
 //        Assert.assertEquals(map3.toString(), ans3);
     }
 }

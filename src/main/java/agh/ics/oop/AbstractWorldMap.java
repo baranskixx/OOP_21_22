@@ -5,12 +5,15 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver {
-    protected HashMap<Vector2d, Animal> animals = new HashMap<>();
+    protected LinkedHashMap<Vector2d, Animal> animals = new LinkedHashMap<>();
+    protected MapBoundary boundary = new MapBoundary(this);;
 
     public boolean place(Animal animal) {
         if (this.canMoveTo(animal.getPosition())){
             animal.addObserver(this);
+            animal.addObserver(this.boundary);
             this.animals.put(animal.getPosition(), animal);
+            this.boundary.addObject(animal);
             return true;
         }   throw new IllegalArgumentException(animal.getPosition().toString() + " is not valid place position");
     }
@@ -28,8 +31,6 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
     public abstract Vector2d[] getCorners();
 
     public String toString(){
-        System.out.println("Odpalono visualizer.");
-        System.out.println("Ilość zwierząt: " + animals.size());
         MapVisualizer visualizer = new MapVisualizer(this);
         Vector2d corners[] = this.getCorners();
         return visualizer.draw(corners[0], corners[1]);
