@@ -40,4 +40,6 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
         Animal a = this.animals.remove(oldPosition);
         this.animals.put(newPosition, a);
     }
+
+
 }
