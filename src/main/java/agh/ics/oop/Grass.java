@@ -1,5 +1,8 @@
 package agh.ics.oop;
 
+import javafx.scene.image.Image;
+import java.io.FileInputStream;
+
 public class Grass implements IMapElement{
 
     protected Vector2d position;
@@ -14,5 +17,16 @@ public class Grass implements IMapElement{
 
     public String toString(){
         return "*";
+    }
+
+    @Override
+    public Image getImage() {
+        try {
+            return new Image(new FileInputStream("src/main/resources/grass.png"));
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
     }
 }

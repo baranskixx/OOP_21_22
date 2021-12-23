@@ -1,5 +1,8 @@
 package agh.ics.oop;
 
+import javafx.scene.image.Image;
+
+import java.io.FileInputStream;
 import java.util.ArrayList;
 
 public class Animal implements IMapElement{
@@ -69,6 +72,23 @@ public class Animal implements IMapElement{
         this.mapPosition = newPos;
         for (IPositionChangeObserver o : this.observers){
             o.positionChanged(oldPos, newPos);
+        }
+    }
+
+    @Override
+    public Image getImage() {
+        try {
+            String path = "src/main/resources/";
+            return switch (this.direction) {
+                case NORTH -> new Image(new FileInputStream("src/main/resources/up.png"));
+                case SOUTH -> new Image(new FileInputStream("src/main/resources/down.png"));
+                case EAST -> new Image(new FileInputStream("src/main/resources/right.png"));
+                case WEST -> new Image(new FileInputStream("src/main/resources/left.png"));
+            };
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+            return null;
         }
     }
 }

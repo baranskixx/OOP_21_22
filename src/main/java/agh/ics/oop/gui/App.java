@@ -2,6 +2,7 @@ package agh.ics.oop.gui;
 
 import agh.ics.oop.*;
 import javafx.geometry.HPos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -16,16 +17,21 @@ public class App extends javafx.application.Application{
     GridPane grid = new GridPane();
     Scene scene = new Scene(this.grid, 400, 400);
     Vector2d [] corners;
+    AbstractWorldMap map;
+    Stage primaryStage;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         MoveDirection[] directions = new OptionsParser().parse(getParameters().getRaw().toArray(new String[0]));
-        GrassField map = new GrassField(10);
+        this.map = new GrassField(10);
         Vector2d[] positions = {new Vector2d(2, 2), new Vector2d(3, 4)};
         IEngine engine = new SimulationEngine(directions, map, positions);
         engine.run();
-        System.out.println(map.toString());
+        System.out.println(this.map.toString());
+        this.drawMap();
+    }
 
+    public void drawMap(){
         this.corners = map.getCorners();
 
         int minX = this.corners[0].x;
@@ -54,17 +60,28 @@ public class App extends javafx.application.Application{
                 int gridX = 1 + (x - minX);
                 int gridY = 1 + (maxY - y);
                 o = map.objectAt(new Vector2d(x, y));
-                if (o != null) label = new Label(o.toString());
-                else label = new Label(" ");
-                this.grid.add(label, gridX, gridY);
-                GridPane.setHalignment(label, HPos.CENTER);
+                if (o != null) {
+                    GuiElementBox elemBox = new GuiElementBox((IMapElement) o);
+                    this.grid.add(elemBox.getVBox(), gridX, gridY);
+                    GridPane.setHalignment(elemBox.getVBox(), HPos.CENTER);
+                }
+                else {
+                    label = new Label(" ");
+                    this.grid.add(label, gridX, gridY);
+                    GridPane.setHalignment(label, HPos.CENTER);
+                }
             }
         }
 
         grid.getColumnConstraints().add(new ColumnConstraints((20)));
         grid.getRowConstraints().add(new RowConstraints(20));
         this.grid.setGridLinesVisible(true);
-        primaryStage.setScene(this.scene);
-        primaryStage.show();
+        this.primaryStage.setScene(this.scene);
+        this.primaryStage.show();
+    }
+
+    public void refresh(){
+        grid.getChildren().clear();
+        this.drawMap();
     }
 }
