@@ -1,9 +1,6 @@
 package agh.ics.oop;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class GrassField extends AbstractWorldMap implements IWorldMap{
     protected int grassCnt;
@@ -58,5 +55,9 @@ public class GrassField extends AbstractWorldMap implements IWorldMap{
 
     public Vector2d[] getCorners() {
         return this.boundary.getBounds();
+    }
+
+    public Set<Vector2d> getGrassPositions(){
+        return this.grass.keySet();
     }
 }
